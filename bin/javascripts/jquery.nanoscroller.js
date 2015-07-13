@@ -390,7 +390,7 @@
       this.doc = $(this.options.documentContext || document);
       this.win = $(this.options.windowContext || window);
       this.body = this.doc.find('body');
-      this.$content = this.$el.children("." + this.options.contentClass);
+      this.$content = $("." + this.options.contentClass,this.$el);
       this.$content.attr('tabindex', this.options.tabIndex || 0);
       this.content = this.$content[0];
       this.previousPosition = 0;
@@ -783,7 +783,7 @@
       });
       contentPosition = this.$content.css('position');
       if (contentPosition === 'static' || contentPosition === 'relative') {
-        right = parseInt(this.$content.css('right'), 10);
+        right = parseInt(this.$content[0].style.right, 10);
         if (right) {
           this.$content.css({
             right: '',
