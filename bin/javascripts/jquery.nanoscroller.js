@@ -771,6 +771,7 @@
       this.isActive = true;
       if ((content.scrollHeight === content.clientHeight) || (this.pane.outerHeight(true) >= content.scrollHeight && contentStyleOverflowY !== SCROLL)) {
         this.pane.hide();
+        this.slider.hide();
         this.isActive = false;
       } else if (this.el.clientHeight === content.scrollHeight && contentStyleOverflowY === SCROLL) {
         this.slider.hide();
@@ -781,16 +782,11 @@
         opacity: (this.options.alwaysVisible ? 1 : ''),
         visibility: (this.options.alwaysVisible ? 'visible' : '')
       });
-      contentPosition = this.$content.css('position');
-      if (contentPosition === 'static' || contentPosition === 'relative') {
-        right = parseInt(this.$content[0].style.right, 10);
-        if (right) {
-          this.$content.css({
-            right: '',
-            marginRight: right
-          });
-        }
-      }
+      right = parseInt(this.$content[0].style.right, 10);
+      this.$content.css({
+        right: '',
+        marginRight: right
+      });
       return this;
     };
 
